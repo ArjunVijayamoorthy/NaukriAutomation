@@ -18,13 +18,13 @@ public class ProfileUpdateTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
-        options.addArguments("--user-data-dir=/tmp/chrome-profile-" + System.currentTimeMillis());
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--headless", "--disable-gpu");
-        options.addArguments("--headless=new");
+        options.addArguments("--headless=new"); // Enables new headless mode
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
-        driver.manage().window().maximize();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--user-data-dir=/tmp/chrome-profile-" + System.currentTimeMillis());
+        //driver.manage().window().maximize();
         driver.get("https://www.naukri.com/");
         loginPage = new LoginPage(driver);
         Homepage = new Homepage(driver);
@@ -49,6 +49,7 @@ public class ProfileUpdateTest {
 
     @AfterTest
     public void tearDown()
-    {driver.quit();
+    {
+        driver.quit();
     }
 }
