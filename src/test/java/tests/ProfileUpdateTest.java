@@ -18,6 +18,7 @@ public class ProfileUpdateTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
+        options.addArguments("--headless", "--disable-gpu");
         driver.manage().window().maximize();
         driver.get("https://www.naukri.com/");
         loginPage = new LoginPage(driver);

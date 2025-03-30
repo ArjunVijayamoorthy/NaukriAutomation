@@ -2,7 +2,7 @@ name: Naukri Automation
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # Runs daily at 12 PM UTC (5:30 PM IST)
+    - cron: '30 1 * * *'  # Runs daily at 1:30 AM UTC (7:00 AM IST)
   workflow_dispatch:       # Allows manual trigger
 
 jobs:
@@ -23,14 +23,14 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Run Selenium Tests in Headless Mode
-        run: mvn test -Dtest=NaukriTest -Dheadless=true
+        run: mvn test -Dtest=ProfileUpdateTest -Dheadless=true
         env:
           NAUKRI_EMAIL: ${{ secrets.NAUKRI_EMAIL }}
           NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
 
       - name: Upload Test Reports
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Updated from v3 to v4
         with:
           name: test-reports
           path: target/surefire-reports/
