@@ -12,6 +12,7 @@ public class ProfileUpdateTest {
     LoginPage loginPage;
     Homepage Homepage;
     ProfilePage ProfilePage;
+
     @BeforeTest
     public void setup(){
         WebDriverManager.chromedriver().setup();
@@ -25,10 +26,11 @@ public class ProfileUpdateTest {
     }
     @Test
     public void LoginTest() throws InterruptedException {
-
+        String email = System.getenv("NAUKRI_EMAIL");
+        String password = System.getenv("NAUKRI_PASSWORD");
         loginPage.Click_loginlink();
-        loginPage.Enter_Username("arjunmoorthy06@gmail.com");
-        loginPage.Enter_Password("XperseyNaukri0605$");
+        loginPage.Enter_Username(email);
+        loginPage.Enter_Password(password);
         loginPage.Click_LoginButton();
         Homepage.ClickProfile();
         ProfilePage.ClickEditProfile();
