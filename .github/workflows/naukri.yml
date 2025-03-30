@@ -18,14 +18,13 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
       - name: Install Chrome
         run: sudo apt-get install -y google-chrome-stable  # Installs Chrome on GitHub runner
 
       - name: Kill Existing Chrome Processes
         run: pkill -f chrome || true  # Ensures no old Chrome processes interfere
 
-      - name: Install Dependencies
-        run: mvn clean install -DskipTests
       - name: Install Dependencies
         run: mvn clean install -DskipTests
 
