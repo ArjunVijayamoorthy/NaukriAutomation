@@ -20,7 +20,7 @@ public class ProfilePage {
     // Locators
     By EditProfile= By.xpath("//em[@class='icon edit ']");
     By EditLocation =By.xpath("//input[@id='locationSugg']");
-    By ClickLocation =By.xpath("//li[normalize-space()='Chennai']");
+    By ClickLocation =By.xpath("//li[normalize-space()='Bengaluru']");
     By SaveBtn=By.xpath("//button[@id='saveBasicDetailsBtn']");
 
     // Actions with WebDriverWait
