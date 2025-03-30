@@ -18,12 +18,14 @@ public class ProfileUpdateTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
-        options.addArguments("--headless=new"); // Enables new headless mode
+        options.addArguments("--headless=new");  // Use new headless mode
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--user-data-dir=/tmp/chrome-profile-" + System.currentTimeMillis());
+        options.addArguments("--incognito");  // Runs Chrome in Incognito Mode
+        options.addArguments("--user-data-dir=/tmp/chrome-profile-" + System.currentTimeMillis());  // Unique user profile
+        options.addArguments("--disable-extensions");
         //driver.manage().window().maximize();
         driver.get("https://www.naukri.com/");
         loginPage = new LoginPage(driver);
