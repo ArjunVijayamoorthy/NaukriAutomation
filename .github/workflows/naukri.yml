@@ -1,0 +1,36 @@
+name: Naukri Automation
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs daily at 12 PM UTC (5:30 PM IST)
+  workflow_dispatch:       # Allows manual trigger
+
+jobs:
+  naukri-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install Dependencies
+        run: mvn clean install -DskipTests
+
+      - name: Run Selenium Tests in Headless Mode
+        run: mvn test -Dtest=NaukriTest -Dheadless=true
+        env:
+          NAUKRI_EMAIL: ${{ secrets.NAUKRI_EMAIL }}
+          NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
+
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: target/surefire-reports/
