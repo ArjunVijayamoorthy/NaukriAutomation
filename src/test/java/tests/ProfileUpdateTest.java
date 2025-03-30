@@ -43,7 +43,6 @@ public class ProfileUpdateTest {
 
     @AfterTest
     public void tearDown()
-    {
-        driver.quit();
+    {driver.quit();
     }
 }
