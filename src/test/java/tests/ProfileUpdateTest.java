@@ -25,7 +25,7 @@ public class ProfileUpdateTest {
         ProfilePage = new ProfilePage(driver);
     }
     @Test
-    public void LoginTest() throws InterruptedException {
+    public void LoginTest()  {
         String email = System.getenv("NAUKRI_EMAIL");
         String password = System.getenv("NAUKRI_PASSWORD");
         loginPage.Click_loginlink();
