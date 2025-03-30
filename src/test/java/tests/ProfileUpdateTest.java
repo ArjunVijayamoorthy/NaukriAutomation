@@ -7,8 +7,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.Homepage;
 import pages.LoginPage;
 import pages.ProfilePage;
-
-
 public class ProfileUpdateTest {
     WebDriver driver;
     LoginPage loginPage;
