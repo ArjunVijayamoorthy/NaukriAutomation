@@ -18,7 +18,12 @@ public class ProfileUpdateTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
+        options.addArguments("--user-data-dir=/tmp/chrome-profile-" + System.currentTimeMillis());
+        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless", "--disable-gpu");
+        options.addArguments("--headless=new");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
         driver.manage().window().maximize();
         driver.get("https://www.naukri.com/");
         loginPage = new LoginPage(driver);
