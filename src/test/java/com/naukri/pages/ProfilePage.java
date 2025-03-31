@@ -15,7 +15,7 @@ public class ProfilePage {
     // Constructor
     public ProfilePage(WebDriver driver){
         this.driver=driver;
-        this.wait =new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.wait =new WebDriverWait(driver, Duration.ofSeconds(60));
     }
     // Locators
     By EditProfile= By.xpath("//em[@class='icon edit ']");

@@ -13,11 +13,11 @@ public class LoginPage {
     // Constructor
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Default explicit wait
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(60)); // Default explicit wait
     }
 
     // Locators
-    private By loginlink = By.id("login_Layer");
+    private By loginlink = By.xpath("(//a[normalize-space()='Login'])[1]");
     private By Username = By.xpath("//input[@placeholder='Enter your active Email ID / Username']");
     private By Password = By.xpath("//input[@placeholder='Enter your password']");
     private By LoginButton = By.xpath("//button[normalize-space()='Login']");
