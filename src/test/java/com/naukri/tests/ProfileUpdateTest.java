@@ -8,6 +8,8 @@ import com.naukri.pages.Homepage;
 import com.naukri.pages.LoginPage;
 import com.naukri.pages.ProfilePage;
 
+import java.util.Arrays;
+
 public class ProfileUpdateTest {
     WebDriver driver;
     LoginPage loginPage;
@@ -17,10 +19,14 @@ public class ProfileUpdateTest {
     @BeforeTest
     public void setup() {
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
         options.addArguments("--disable-gpu", "--window-size=1920,1080", "--no-sandbox", "--disable-dev-shm-usage");
-        options.addArguments("--user-data-dir=/tmp/chrome-user-data");
-        options.addArguments("--remote-debugging-port=9222");
-        driver = new ChromeDriver(options);  // Initialize WebDriver
+        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.138 Safari/537.36");
+        options.addArguments("--incognito");
+        options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
+        options.setExperimentalOption("useAutomationExtension", false);
+        driver = new ChromeDriver(options);
+
         //driver.manage().window().maximize();
         driver.get("https://www.naukri.com/");
 
@@ -32,7 +38,7 @@ public class ProfileUpdateTest {
     @Test
     public void LoginTest() {
         String email = System.getenv("NAUKRI_EMAIL");
-        String password = System.getenv("NAUKRI_PASSWORD");
+       String password = System.getenv("NAUKRI_PASSWORD");
 //        String email ="arjunmoorthy06@gmail.com";
 //        String password ="XperseyNaukri0605$";
         if (email == null || password == null) {
