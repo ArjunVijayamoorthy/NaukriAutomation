@@ -37,10 +37,10 @@ public class ProfileUpdateTest {
 
     @Test
     public void LoginTest() {
-        String email = System.getenv("NAUKRI_EMAIL");
-       String password = System.getenv("NAUKRI_PASSWORD");
-//        String email ="arjunmoorthy06@gmail.com";
-//        String password ="XperseyNaukri0605$";
+//        String email = System.getenv("NAUKRI_EMAIL");
+//       String password = System.getenv("NAUKRI_PASSWORD");
+        String email ="arjunmoorthy06@gmail.com";
+        String password ="XperseyNaukri0605$";
         if (email == null || password == null) {
             throw new RuntimeException("Environment variables NAUKRI_EMAIL or NAUKRI_PASSWORD are not set.");
         }
