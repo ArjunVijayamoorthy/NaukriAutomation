@@ -27,8 +27,8 @@ jobs:
       - name: Install Dependencies
         run: mvn clean install -DskipTests
 
-      - name: Run Selenium Tests in Headless Mode
-        run: mvn test -Dtest=ProfileUpdateTest -Dheadless=true
+      - name: Run TestNG Tests
+        run: mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng.xml
         env:
           NAUKRI_EMAIL: ${{ secrets.NAUKRI_EMAIL }}
           NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
