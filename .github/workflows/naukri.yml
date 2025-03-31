@@ -19,10 +19,15 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Install Chrome and Xvfb
+      - name: Install Chrome and ChromeDriver
         run: |
           sudo apt-get update
-          sudo apt-get install -y google-chrome-stable xvfb
+          sudo apt-get install -y google-chrome-stable google-chrome-stable
+          CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}')
+          echo "Installed Chrome Version: $CHROME_VERSION"
+          sudo apt-get install -y xvfb
+          sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+          sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
       - name: Start Virtual Display
         run: Xvfb :99 -screen 0 1920x1080x24 &
@@ -30,7 +35,12 @@ jobs:
       - name: Set DISPLAY Environment Variable
         run: echo "DISPLAY=:99" >> $GITHUB_ENV
 
-      - name: Install Dependencies
+      - name: Print Java and Chrome Info
+        run: |
+          java -version
+          google-chrome-stable --version
+
+      - name: Install Maven Dependencies
         run: mvn clean install -DskipTests
 
       - name: Run Selenium Tests
@@ -45,3 +55,10 @@ jobs:
         with:
           name: test-reports
           path: target/surefire-reports/
+
+      - name: Upload Screenshots on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failed-test-screenshots
+          path: target/screenshots/
