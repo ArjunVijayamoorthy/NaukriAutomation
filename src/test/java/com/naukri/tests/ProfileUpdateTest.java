@@ -18,7 +18,9 @@ public class ProfileUpdateTest {
     @BeforeTest
     public void setup() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-gpu", "--window-size=1920,1080", "--no-sandbox", "--disable-dev-shm-usage");
+        options.addArguments("--headless=new", "--disable-gpu", "--window-size=1920,1080", "--no-sandbox", "--disable-dev-shm-usage");
+        options.addArguments("--user-data-dir=/tmp/chrome-user-data");
+        options.addArguments("--remote-debugging-port=9222");
         driver = new ChromeDriver(options);  // Initialize WebDriver
 
         //driver.manage().window().maximize();

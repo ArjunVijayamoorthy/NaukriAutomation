@@ -18,6 +18,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+      - name: Kill Existing Chrome Processes
+        run: pkill -f chrome || true  # Ensures no old Chrome processes are running
 
       - name: Install Chrome
         run: sudo apt-get install -y google-chrome-stable
