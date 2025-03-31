@@ -1,4 +1,4 @@
-package pages;
+package com.naukri.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +15,7 @@ public class ProfilePage {
     // Constructor
     public ProfilePage(WebDriver driver){
         this.driver=driver;
-        this.wait =new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait =new WebDriverWait(driver, Duration.ofSeconds(20));
     }
     // Locators
     By EditProfile= By.xpath("//em[@class='icon edit ']");

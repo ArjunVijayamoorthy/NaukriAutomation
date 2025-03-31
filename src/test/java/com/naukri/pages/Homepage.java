@@ -1,4 +1,4 @@
-package pages;
+package com.naukri.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +16,7 @@ public class Homepage {
     public Homepage(WebDriver driver)
     {
         this.driver=driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
     // Locators
     private By ViewProfile =By.xpath("//a[normalize-space()='View profile']");

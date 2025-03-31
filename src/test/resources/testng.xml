@@ -2,7 +2,7 @@
 <suite name="Selenium Suite">
     <test name="ProfileUpdateTest">
         <classes>
-            <class name="tests.ProfileUpdateTest"/>
+            <class name="com.naukri.tests.ProfileUpdateTest"/>
         </classes>
     </test>
 </suite>
