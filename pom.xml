@@ -16,7 +16,7 @@
         <selenium.version>4.15.0</selenium.version>
         <testng.version>7.9.0</testng.version>
         <webdrivermanager.version>5.7.0</webdrivermanager.version>
-        <jackson.version>2.17.0</jackson.version>  <!-- Updated to latest version -->
+        <jackson.version>2.17.0</jackson.version>
     </properties>
 
     <dependencies>
@@ -76,7 +76,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>  <!-- Upgraded for Java 21 support -->
+                <version>3.11.0</version>
                 <configuration>
                     <source>21</source>
                     <target>21</target>
@@ -101,6 +101,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
             </plugin>
         </plugins>
     </build>
