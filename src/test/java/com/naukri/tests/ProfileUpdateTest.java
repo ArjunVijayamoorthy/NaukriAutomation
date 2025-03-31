@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import com.naukri.pages.Homepage;
 import com.naukri.pages.LoginPage;
 import com.naukri.pages.ProfilePage;
@@ -18,11 +17,10 @@ public class ProfileUpdateTest {
     @BeforeTest
     public void setup() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new", "--disable-gpu", "--window-size=1920,1080", "--no-sandbox", "--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu", "--window-size=1920,1080", "--no-sandbox", "--disable-dev-shm-usage");
         options.addArguments("--user-data-dir=/tmp/chrome-user-data");
         options.addArguments("--remote-debugging-port=9222");
         driver = new ChromeDriver(options);  // Initialize WebDriver
-
         //driver.manage().window().maximize();
         driver.get("https://www.naukri.com/");
 
